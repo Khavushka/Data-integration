@@ -1,0 +1,5 @@
+<!ELEMENT group (projectmanager, member, member+)>
+<!ELEMENT class ((group, member+)+)>
+<!ELEMENT project (task | #PCDATA)>
+<!ELEMENT table (tr, tr)>
+<!ELEMENT tr (td+)>
