@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE booksCanon SYSTEM "booksCanon.xsd">
-<booksCanon>
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="chapter2html.xsl"?>
+
+<booksCanon
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="booksCanon.xsd">
   <book ref="Llo08" mycanon="mdu,all">
     <title>Learn How to Build Web Sites the Right Way from Scratch</title>
     <edition>2</edition>
@@ -8,17 +11,17 @@
       <author>
         <firstname>Ian</firstname>
         <lastname>Lloyd</lastname>
-      </author>
+        </author>
     </authors>
     <publisher>
       <name>SitePoint</name>
       <year>2008</year>
       <place>Collingwood, VIC, Australia</place>
     </publisher>
-    <pages>300</pages>
-    <isbn></isbn>
-    <price>9.73</price>
-    <currency>EU&#8364;</currency>
+    <pages>470</pages>
+    <isbn>978-0980455274</isbn>
+    <price>17.97</price>
+    <currency>US$</currency>
     <comments>
       <comment>1. sem: Chapters 1-7</comment>
     </comments>
@@ -65,17 +68,17 @@
       <year>2009</year>
       <place>Sebastopol, CA, USA</place>
     </publisher>
-    <pages>120</pages>
-    <isbn></isbn>
-    <price></price>
-    <currency></currency>
+    <pages>528</pages>
+    <isbn>978-0596157135</isbn>
+    <price>23.99</price>
+    <currency>US$</currency>
     <comments>
       <comment>2. sem: Chapters 1-7, 11, 14-17</comment>
       <comment>3. sem: Chapters 8-10</comment>
     </comments>
   </book>
 
-  <book ref="For04" mycanon="mdu,all">
+  <book ref="For04" mycanon="mdu">
     <title>SQL in 10 Minutes</title>
     <edition>3</edition>
     <authors>
@@ -89,10 +92,10 @@
       <year>2004</year>
       <place>Indianapolis, IN, USA</place>
     </publisher>
-    <pages></pages>
-    <isbn></isbn>
-    <price>120</price>
-    <currency></currency>
+    <pages>256</pages>
+    <isbn>978-0672325670</isbn>
+    <price>14.97</price>
+    <currency>EU&#8364;</currency>
     <comments>
       <comment>3. sem: Chapters 1-17</comment>
     </comments>
