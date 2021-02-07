@@ -3,9 +3,8 @@
 
 <booksCanon
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="booksCanon.xsd">
+    xsi:noNamespaceSchemaLocation="booksCanon.xsd" >
   <book ref="Llo08" mycanon="mdu,all">
-    <title>Learn How to Build Web Sites the Right Way from Scratch</title>
     <edition>2</edition>
     <authors>
       <author>
@@ -26,7 +25,7 @@
       <comment>1. sem: Chapters 1-7</comment>
     </comments>
   </book>
-  
+ 
   <book ref="Shu08" mycanon="mdu">
     <title>Learning ActionScript 3.0</title>
     <edition>2</edition>

@@ -1,73 +1,90 @@
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
-
-	<xsl:output method="xml"
-				indent="yes"
-				omit-xml-declaration="no"
-	            doctype-system="about:legacy-compat"/>
-
-	<!-- The following rule matches the root element,
-		 irrespective of name,
-	     and creates an html outline with an apply templates somewhere
-	-->
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" 
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output
+		method="html"
+		doctype-system="about:legacy-compat"
+		encoding="UTF-8"
+		indent="yes" />
+                
 	<xsl:template match="/">
-		<html>
-			<head>
-				<title><xsl:value-of select="/chapter/title"/></title>
-				<meta charset="utf-8"/>
-			</head>
-			<body>
-				<xsl:apply-templates/>		<!-- here the following
-				                                 rules wil place
-				                                 content -->
-			</body>
-		</html>
+        <html>
+            <head>
+                <title>Learn How to Build Web Sites the Right Way from Scratch</title>
+                <link rel="stylesheet" href="carassignment.css"/>
+            </head>
+            <body>
+                <h1>Learn How to Build Web Sites the Right Way from Scratch</h1>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Edition</th>
+                        <th>Authors</th>
+                        <th>Publisher</th>
+                        <th>ISBN</th>
+                        <th>Price</th>
+                        <th>Currency</th>
+                        <th>Comments</th>
+                    </tr>                   
+                    <xsl:apply-templates/>                   
+                     <tr>
+                        <td>
+                            <xsl:value-of select="
+                            round(sum(books/book/price) div count(books/book))"/>
+                        </td>
+                    </tr>
+                </table>
+            </body>
+        </html>
 	</xsl:template>
+    
+    <xsl:template match="books">
+        <xsl:apply-templates select="book">
+            <xsl:sort select="price" data-type="number" order="ascending"/>
+        </xsl:apply-templates>
+    </xsl:template>
+    
+    <xsl:template match="book">
+        <tr>
+            <td><xsl:value-of select="@mdu"/></td>
+            <td><xsl:value-of select="author"/></td>
+            <xsl:apply-templates select="publisher"/>
+            <xsl:apply-templates select="pages"/>
+            <td><xsl:value-of select="price"/></td>
+            
+        </tr>
+    </xsl:template>
+    
+    <xsl:template match="author">
+        <xsl:choose>
+            <xsl:when test=". = 'Ian'"> 
+                <td class="Ian"></td>
+            </xsl:when>
+            <xsl:when test=". = 'Rich'"> 
+                <td class="Rich"></td>
+            </xsl:when>
+            <xsl:when test=". = 'Robin'"> 
+                <td class="Robin"></td>
+            </xsl:when>
+            <xsl:when test=". = 'blue'"> 
+                <td class="blue"></td>
+            </xsl:when>
+            <xsl:when test=". = 'silver'"> 
+                <td class="silver"></td>
+            </xsl:when>
+            <xsl:when test=". = 'gray'"> 
+                <td class="gray"></td>
+            </xsl:when>
+            <xsl:otherwise> 
+                <td class="white"></td>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>   
 
-	<!-- on meeting the chapter/title in the xml doc xslt will
-	     create an h1 element in the html. Its content will be
-	     the content of the chapter/title element of the xml -->
-	<xsl:template match="chapter/title">
-		<h1><xsl:apply-templates/></h1>
-	</xsl:template>
+    <xsl:template match="dealersecurity">
+    <xsl:if test="@buyback = 'yes'"> 
+                <td>&#10004;</td>
+    </xsl:if>
 
-	<xsl:template match="chapter/section/title">
-		<h2><xsl:apply-templates/></h2>
-	</xsl:template>
-
-	<xsl:template match="chapter/section/section/title">
-		<h3><xsl:apply-templates/></h3>
-	</xsl:template>
-
-	<xsl:template match="chapter/section/section/section/title">
-		<h4><xsl:apply-templates/></h4>
-	</xsl:template>
-
-	<xsl:template match="para">
-		<p><xsl:apply-templates/></p>
-	</xsl:template>
-
-	<!-- This rule matches a para from xml and creates a p-tag in the html, but only if the para has a type attribute with
-	the value 'intro' -->
-	<xsl:template match="para[@type='intro']" priority="1">
-		<p><i><xsl:apply-templates/></i></p>
-	</xsl:template>
-
-	<xsl:template match="para[@type='warning']" priority="1">
-		<p style="background-color: #cccccc; border: thin solid; width:300px; color:#ff0000;">
-			<xsl:apply-templates/>
-		</p>
-	</xsl:template>
-
-	<xsl:template match="para[@type='note']" priority="1">
-		<p style="background-color: #cccccc; border: thin solid; width:300px;">
-			<b><xsl:apply-templates/></b>
-		</p>
-	</xsl:template>
-
-	<xsl:template match="b">
-		<b><xsl:apply-templates/></b>
-	</xsl:template>
-
+    </xsl:template> 
 </xsl:stylesheet>
