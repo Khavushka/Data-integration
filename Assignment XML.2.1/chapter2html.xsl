@@ -41,48 +41,32 @@
     <xsl:template match="books">
         <xsl:apply-templates select="book">
             <xsl:sort select="price" data-type="number" order="ascending"/>
+            <!-- <xsl:sort select="title" data-type="text" order="ascending"/> -->
         </xsl:apply-templates>
     </xsl:template>
     
     <xsl:template match="book">
         <tr>
-            <td><xsl:value-of select="@mdu"/></td>
-            <td><xsl:value-of select="author"/></td>
-            <xsl:apply-templates select="publisher"/>
-            <xsl:apply-templates select="pages"/>
-            <td><xsl:value-of select="price"/></td>
+            <td><xsl:value-of select="title"/></td>
+             <td><xsl:value-of select="edition"/></td>
+            <td><xsl:value-of select="authors"/></td>
+             <td><xsl:value-of select="publisher"/></td>
+             <td><xsl:value-of select="pages"/></td>
+             <td><xsl:value-of select="isbn"/></td>
+             <td><xsl:value-of select="price"/></td>
+            <td><xsl:value-of select="currency"/></td>
+             <td><xsl:value-of select="comments"/></td>
+
             
         </tr>
     </xsl:template>
     
     <xsl:template match="author">
-        <xsl:choose>
-            <xsl:when test=". = 'Ian'"> 
-                <td class="Ian"></td>
-            </xsl:when>
-            <xsl:when test=". = 'Rich'"> 
-                <td class="Rich"></td>
-            </xsl:when>
-            <xsl:when test=". = 'Robin'"> 
-                <td class="Robin"></td>
-            </xsl:when>
-            <xsl:when test=". = 'blue'"> 
-                <td class="blue"></td>
-            </xsl:when>
-            <xsl:when test=". = 'silver'"> 
-                <td class="silver"></td>
-            </xsl:when>
-            <xsl:when test=". = 'gray'"> 
-                <td class="gray"></td>
-            </xsl:when>
-            <xsl:otherwise> 
-                <td class="white"></td>
-            </xsl:otherwise>
-        </xsl:choose>
+      
     </xsl:template>   
 
-    <xsl:template match="dealersecurity">
-    <xsl:if test="@buyback = 'yes'"> 
+    <xsl:template match="title">
+    <xsl:if test="@mdu = 'yes'"> 
                 <td>&#10004;</td>
     </xsl:if>
 
