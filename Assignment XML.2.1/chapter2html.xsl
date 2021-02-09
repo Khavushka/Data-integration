@@ -11,7 +11,6 @@
         <html>
             <head>
                 <title>Learn How to Build Web Sites the Right Way from Scratch</title>
-                <link rel="stylesheet" href="carassignment.css"/>
             </head>
             <body>
                 <h1>Learn How to Build Web Sites the Right Way from Scratch</h1>
